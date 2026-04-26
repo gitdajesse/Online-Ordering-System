@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {# This page shows food picture, with a button ("start order") and sends the user to the menu  #}
+
+    <div class = "cover-container">
+        <img src=" {{ url_for('static', filename = 'images/cover/rest_wallpaper3.jpg') }} " alt="Vibrant restaraunt" class = "cover-image">
+        <div class = "overlay">
+            <h1 class = "welcome-text">
+            Welcome to African Cafe
+            </h1>
+            <form action = "/menu" method = "get" class = "home-form">
+                <button type = "submit" class="btn btn-success btn-lg">
+                    Start Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
