@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container text-center mt-4">
+        {% if not has_orders %}
+            <div class = "n1" style="text-align: center; padding: 50px;">
+                <h1 class="mt-5">
+                    You haven't placed any orders yet.
+                </h1>
+                <form action="/menu" method="get">
+                    <button type="submit" class="btn btn-primary btn-lg mt-3">
+                        Browse Menu
+                    </button>
+                </form>
+            </div>
+        {% else %}
+            <div class="container mt-4">
+                <h1 class="display-4 mt-3" style="font-weight: bold; text-decoration: underline; text-transform: uppercase;">
+                     Your Order History
+                </h1>
+
+                <div class="row justify-content-center g-3 mt-4">
+
+                    {% for order in orders %}
+
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="card h-100 shadow-sm">
+
+                                <!-- Header -->
+                                <div class="card-header">
+
+                                    <small class="text-muted">
+                                        Date: {{ order.created_at }}
+                                    </small>
+                                </div>
+
+                                <!-- Body -->
+                                <div class="card-body">
+                                    <p>
+                                        <strong>Order #:</strong> {{ order.order_number }}
+                                    </p>
+
+                                    <p class="card-text">
+                                        <strong>Total:</strong>
+                                        ${{ "%.2f"|format(order.total_amount / 100) }}
+                                    </p>
+
+                                    <p class="card-text">
+                                        <strong>Status:</strong>
+                                        <span class="badge bg-success">
+                                            {{ order.status }}
+                                        </span>
+                                    </p>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="card-footer d-flex flex-column gap-2">
+
+                                    <form action="/receipt/{{ order.order_number }}" method="get">
+                                        <button type="submit" class="btn btn-outline-success w-100">
+                                            View Receipt
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

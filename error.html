@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="error-container">
+        <h2>
+            Error
+        </h2>
+        <p>
+            {{ message }}
+        </p>
+        <form action = "/" method = "get">
+                <button type = "submit" class = "button" >
+                    Return to Home
+                </button>
+        </form>
+        <form action = "/menu" method = "get">
+                <button type = "submit" class = "button" >
+                    Browse Menu
+                </button>
+        </form>
+    </div>
+{% endblock %}
