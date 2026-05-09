@@ -1,0 +1,75 @@
+{% extends "layout.html" %} {% block content %} 
+
+<div class="container mt-5">
+  
+  <div class="card text-center p-0">
+    <div class="card-header bg-secondary text-white">
+      <h1>Create an Account</h1>
+    </div>
+
+    <div class="card-body">
+      <p></p>
+
+      <h3>Create your account to get started.</h3>
+
+      <form action="/register/submit" method="post">
+        <label class="label mb-4 mt-4">
+          Choose a Username:
+          <input
+            autocomplete="off"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter Username"
+            required
+            autocomplete="off"
+          />
+        </label>
+        <br />
+        <label class="label mb-4">
+          Create a Password:
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Create password"
+            required
+          />
+        </label>
+        <br />
+        <label class="label mb-4">
+          Confirm Password:
+          <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            placeholder="Confirm password"
+            required
+          />
+        </label>
+        <input type="hidden" name="return_to" value="{{ return_to or '' }}" />
+        <br />
+        <button class="btn btn-success mt-1 mb-4" type="submit">
+          Create Account
+        </button>
+      </form>
+
+      <p class="section mt-4">Already have an account?</p>
+
+      <a
+        class="link btn btn-outline-primary"
+        href="/login?return_to={{ return_to or '/receipt'}}"
+      >
+        Log in here
+      </a>
+
+      <form action="/cart" method="get">
+        <button class="btn btn-outline-secondary mt-4" type="submit">
+          Back to Cart
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

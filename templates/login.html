@@ -1,0 +1,57 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="container text-center mt-5">
+  <div class="card text-center p-0">
+    <div class="card-header bg-secondary text-white">
+      <h1>
+        Log In
+      </h1>
+    </div>
+
+    <div class="card-body">
+      <p></p>
+
+      <h3>
+        Please log in to your account to complete your order.
+      </h3>
+
+      <form action="/login/submit" method="post">
+        <label class="label mb-4 mt-4">
+          Username:
+          <input
+            autocomplete="off"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter Your Username"
+            required
+          />
+        </label>
+        <br>
+        <label class="label mb-4">
+          Password:
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter Your Password"
+            required
+          />
+        </label>
+        <br>
+        <input type="hidden" name="return_to" value="{{ return_to or '' }}" />
+        <button class="btn btn-success mb-4" type="submit">Log In</button>
+      </form>
+
+      <p class = "form-label mt-4">Don't have an account?</p>
+
+      <a class="btn btn-outline-primary" href="/register?return_to={{ return_to or '/receipt'}}"> Create One Here </a>
+
+      <form action="/cart" method="get">
+        <button class="btn btn-outline-secondary mt-4" type="submit">Back to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

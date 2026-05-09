@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container text-center mt-5" >
+        <h1 class="display-4 text-danger mb-4">
+            Error
+        </h1>
+        <p>
+            {{ message }}
+        </p>
+        <div class="buttons d-flex justify-content-center gap-3 mt-4"> 
+            <form action = "/" method = "get">
+                <button type = "submit" class = "btn btn-info" >
+                    Return to Home
+                </button>
+            </form>
+            <form action = "/menu" method = "get">
+                    <button type = "submit" class = "btn btn-success" >
+                        Browse Menu
+                    </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
