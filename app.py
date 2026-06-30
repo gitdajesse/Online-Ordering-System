@@ -196,7 +196,7 @@ def receipt(order_number = None):
             flash("Please sign in to confirm your order", "warning")
             return redirect("/checkout-start?return_to=/receipt")
 
-        # Gets cart from sesjsion
+        # Gets cart from session
         cart = session.get('cart', {})
 
         # Check if cart is empty
